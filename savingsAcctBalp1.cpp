@@ -38,14 +38,14 @@ int main(){
         }
 
         //Add and subtract the amount from the balance
-        endingBalance = (amountDeposited - amountWithdrawn);
+        endingBalance += startingBalance + (amountDeposited - amountWithdrawn);
 
         //Total deposits and withdrawals
         totalDeposits += amountDeposited;
         totalWithdrawals += amountWithdrawn;
 
         //Calculate the monthly interest rate
-        double monthlyInterestRate = interestRate / 12;
+        double monthlyInterestRate = interestRate / 12 / 100;
         double interest = monthlyInterestRate * endingBalance;
         endingBalance += interest;
         totalInterest += interest;
