@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<iomanip>
+#include<fstream>
 using namespace std;
 
 int main(){
@@ -17,6 +18,10 @@ int main(){
     cin >> startingBalance;
     cout << "Enter the number of months that have passed since the account was established: ";
     cin >> months;
+
+    //Open a file
+    ofstream outputFile;
+    outputFile.open("savings_account.txt");
 
     //Loop
     for (int amount = 1; amount <= months; amount++) {
@@ -55,6 +60,14 @@ int main(){
             cout << "The account has been closed due to a negative ending balance!" << endl;
             break;
         }
+
+        //Output to file
+        outputFile << "Ending balance: " << endingBalance << endl;
+        outputFile << "Total amount of deposits: " << totalDeposits << endl;
+        outputFile << "Total amount of withdrawals: " << totalWithdrawals << endl;
+        outputFile << "Total interest earned: " << totalInterest << endl;
+
+        outputFile.close();
 
         // Display the results
         if (endingBalance >=0){
